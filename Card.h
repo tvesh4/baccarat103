@@ -2,21 +2,24 @@
 #define CARD_H
 
 #include <string>
-
+using namespace std;
 class Card {
 public:
     Card();
-    Card(short int face, std::string suit);
+    Card(short int face, string suit);
     short int value();
-    std::string getFace();
-    std::string getSuit();
+    string getFace();
+    string getSuit();
+    
 private:
-    short int cardFace;
-    std::string cardSuit;
+    short int cardValue;
+    short int face;
+    string suit;
 };
 
 class Hand {
 public:
+    Hand();
     Hand(Card card);
     void addCard(Card card);
     short int value();
