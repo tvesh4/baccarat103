@@ -8,7 +8,8 @@ dalight-luckyw - 3036066012
 
 We are Group 103 of ENGG1340 or COMP2113! We hope you enjoy our text-based C++ project.
 
-
+Warning:
+Gambling addiction and financial and personal issues might result from playing games like Baccarat_103. Never wager more than you can afford to lose, and never try to make up for lost funds by placing additional wagers. It's crucial to take breaks and avoid letting gambling interfere with your regular activities and obligations. Keep in mind that playing this game is purely for fun and not as a means of earning money. Consult a specialist or a support group if you need assistance overcoming a gambling addiction.
 
 Instructions:
 
