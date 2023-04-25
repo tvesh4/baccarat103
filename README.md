@@ -29,5 +29,5 @@ Instructions:
 
 Reward:
 
-If you place a bet and you win, you will receive your initial bet back plus an additional amount equal to 150% of your initial bet. 
-For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $150 (which is 150% of $100), for a total of $250. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 2.5 (or 1 + 150% expressed as a decimal).
+If you place a bet and you win, you will receive your initial bet back plus an additional amount equal to 50% of your initial bet. 
+For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $50, for a total of $150. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 1.5.
