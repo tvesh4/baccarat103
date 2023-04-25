@@ -9,7 +9,7 @@ dalight-luckyw - 3036066012
 We are Group 103 of ENGG1340 or COMP2113! We hope you enjoy our text-based C++ project.
 
 Warning:
-Gambling addiction and financial and personal issues might result from playing games like Baccarat_103. Never wager more than you can afford to lose, and never try to make up for lost funds by placing additional wagers. It's crucial to take breaks and avoid letting gambling interfere with your regular activities and obligations. Keep in mind that playing this game is purely for fun and not as a means of earning money. Consult a specialist or a support group if you need assistance overcoming a gambling addiction.
+Gambling addiction and financial and personal issues might result from playing games like Baccarat_103. Never wager more than you can afford to lose, and never try to make up for lost funds by placing additional bets. It's crucial to take breaks and avoid letting gambling interfere with your regular activities and obligations. Keep in mind that playing this game is purely for fun and not as a means of earning money. Consult a specialist or a support group if you need assistance overcoming a gambling addiction.
 
 Instructions:
 
@@ -26,3 +26,8 @@ Instructions:
 6. The hand with the closest sum to 9 is the one that wins. The player wins and is paid even money if their hand is closer to 9. The banker wins and receives even money less a commission if their hand is closer to 9 than any other hand.
 
 7. The player wins and are rewarded 8 to 1 if you bet on a tie and both hands have the same total. This is an uncommon event, so it's not advised to use it as a regular betting strategy.
+
+Reward:
+
+If you place a bet and you win, you will receive your initial bet back plus an additional amount equal to 150% of your initial bet. 
+For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $150 (which is 150% of $100), for a total of $250. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 2.5 (or 1 + 150% expressed as a decimal).
