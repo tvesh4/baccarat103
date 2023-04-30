@@ -11,7 +11,7 @@ We are Group 103 of ENGG1340 or COMP2113! We hope you enjoy our text-based C++ p
 Warning:
 Gambling addiction and financial and personal issues might result from playing games like Baccarat_103. Never wager more than you can afford to lose, and never try to make up for lost funds by placing additional bets. It's crucial to take breaks and avoid letting gambling interfere with your regular activities and obligations. Keep in mind that playing this game is purely for fun and not as a means of earning money. Consult a specialist or a support group if you need assistance overcoming a gambling addiction.
 
-Instructions:
+Introduction:
 
 1. A conventional 52-card deck is used for the game, and two hands are dealt: the player's hand and the banker's hand. You can wager on a tie or either hand winning.
 
@@ -31,3 +31,8 @@ Reward:
 
 If you place a bet and you win, you will receive your initial bet back plus an additional amount equal to 50% of your initial bet. 
 For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $50, for a total of $150. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 1.5.
+
+Detailed Instructions:
+
+1. Run the code by pasting this in the terminal; "g++ pedantic errors    "
+2. 
