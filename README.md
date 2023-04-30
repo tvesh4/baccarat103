@@ -44,10 +44,13 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 **Features**
 • Generation of random game sets or events
     Random card distribution
+    
 • Data structures for storing game status
     Playing
+    
 • Dynamic memory management
     User
+    
 • File input/output (e.g., for loading/saving game status)
     
 • Program codes in multiple files
@@ -55,6 +58,7 @@ For example, if you initially bet $100 and you win, you would receive your $100 
     
 • Proper indentation and naming styles
     Variable names
+    
 • In-code documentation
     Comments
 
