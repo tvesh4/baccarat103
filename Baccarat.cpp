@@ -213,3 +213,60 @@ short checkWin(short player, short bank, short round)
         }
     }
 }
+
+&&
+    
+    void display(string title)
+{
+    string line;
+
+
+    //Set the title
+    cout << setw(20) << right << title << endl;
+
+    //display the separator line below the screen title
+    cout << line.assign(LINE_LENGTH, LINE_SYMBOL) << "\n"<< endl;
+}
+
+void message(string title, string player, int face, string suit)
+{
+
+    display(title);
+    if(suit == "Clubs"){
+        suit = "♣";
+    }
+    else if(suit == "Hearts"){
+        suit = "♥";
+    }
+    else if(suit == "Diamonds"){
+        suit = "♦";
+    }
+    else{
+        suit = "♠";
+    }
+    
+    
+    string card_char = (face == 1) ? "A" :
+                            (face == 11) ? "J" :
+                            (face == 12) ? "Q" :
+                            (face == 13) ? "K" :
+                            std::to_string(face);
+
+    cout << "┌───────┐" << std::endl;
+    cout << "| " << setw(2) << left << card_char << "    |" << endl;
+    cout << "| " << suit << " " << suit << " " << suit << " |" << endl;
+    cout << "| " << suit << " " << suit << " " << suit << " |" << endl;
+    cout << "| " << suit << " " << suit << " " << suit << " |" << endl;
+    cout << "|    " << setw(2) << right << card_char << " |" << endl;
+    cout << "└───────┘" << std::endl;
+
+
+    cout << "\n"<< endl;
+    cout << "Press [Enter] key to continue..." << endl;
+    cin.ignore();
+}
+
+void showData(double initial, double total, double rate){
+    cout << "You started with an initial of $" << initial << ", played a total of " << total << " games and your winning rate so far is " << rate << "%." << endl;
+}
+
