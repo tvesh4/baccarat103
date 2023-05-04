@@ -28,6 +28,92 @@ void play(double &, double &, int &, double &);
 const int LINE_LENGTH = 30;
 const char LINE_SYMBOL = '*';
 
+int main()
+{
+    double initial, money, total=0.0, rate=0; //rate is still in development..... 
+    double choice;
+    int wins=0;
+    string file_name;
+    ifstream file;
+    file.open("gameFiles.txt");
+    display("***** Welcome to Baccarat ****");
+    if(file.fail()){
+        cout << "1. Start New Game" << endl;
+        cout << "2. Load Progress (No Progress Detected)" << endl;
+    }
+    else{
+        cout << "1. Start New Game" << endl;
+        cout << "2. Load Progress" << endl;
+    }
+    
+    detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", choice);
+    while (true){
+        if (choice == 1){
+            new_game(initial, money, total, wins, rate, file_name);
+            break;
+        } 
+        else if ((choice == 2) &&!(file.fail())){
+            load_game(initial, money, total, wins, rate, file_name);
+            break;
+        }
+        else if ((choice == 2) && (file.fail())){
+            cout << "Cannot Load Progress" << '\n' << "Reason: No progess detected" << endl;
+            cout << "------------------------------" << endl;
+            detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", choice);
+        }
+        else{
+            cout << "Invalid choice. Please enter 1 or 2." << endl;
+            detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", choice);
+        }
+    }
+
+    while (true) {
+        double choice;
+        showData(initial, total, rate);
+        cout << "Menu:" << std::endl;
+        cout << "1. Start playing game" << std::endl;
+        cout << "2. Check the balance" << std::endl;
+        cout << "3. Save the game" << std::endl;
+        cout << "4. Exit the game" << std::endl;
+        detect_invalid_input("Enter your choice (1, 2, 3, or 4): ", "Invalid choice. Please enter 1, 2, 3 or 4.", choice);
+        if (choice == 1) {
+            cout << "Starting the game..." << endl;
+            play(money, total, wins, rate);
+            if (money < 10){
+                cout << "You don't have enough money to bet anymore!" << endl;
+                cout << "Would you like to restart? (1. Yes/ 2. No and Quit)" << endl;
+                double decision;
+                detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", decision);
+                while (true){
+                    if (decision == 1){
+                        new_game(initial, money, total, wins, rate, file_name);
+                        break;
+                    }
+                    else if (decision == 2){
+                        cout << "Goodbye, see you next time!" << endl;
+                        exit(0);
+                    }
+                    else{
+                        cout << "Invalid choice. Please enter 1 or 2." << endl;
+                        detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", decision);
+                    }
+                } 
+            }
+        } else if (choice == 2) {
+            cout << "*************************" << endl;
+            cout << "You currently have $" << money << endl;
+            cout << "*************************" << endl;
+        } else if (choice == 3) {
+            save_game(initial, money, total, wins, rate, file_name);
+        } else if (choice == 4) {
+            cout << "Exiting the game..." << endl;
+            break;
+        } else {
+            cout << "Invalid choice. Please enter 1, 2, 3 or 4." << endl;
+        }
+    }
+    return 0;
+}
 
 void play(double &money, double &total, int &wins, double &rate){
     double choice;
