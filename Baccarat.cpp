@@ -144,3 +144,72 @@ void play(double &money, double &total, int &wins, double &rate){
     }
     rate = (wins/total)*100;
 }
+
+/********************
+* Declares a winner *
+********************/
+void declareWinner(short winner, short player, short bank)
+{
+    display("AND THE WINNER IS...");
+
+    switch (winner)
+    {
+    case 1:
+        cout << "Player WINS with a hand of " << player << " over the Banker's hand of " << bank << endl;
+        break;
+    case 2:
+        cout << "Banker WINS with a hand of " << bank << " over the Players's hand of " << player << endl;
+        break;
+    case 3:
+        cout << "Player and Banker TIE with hands of " << player << endl;
+        break;
+    }
+}
+/*********************************************
+* Checks to see if we have a winner or a tie *
+*********************************************/
+short checkWin(short player, short bank, short round)
+{
+    if (round == 1)
+    {
+        if (player > 7 && bank <= 7)
+        {
+            return 1;
+        }
+        else if (bank > 7 && player <= 7)
+        {
+            return 2;
+        }
+        else if (bank > 7 && player > 7)
+        {
+            if(bank>player){
+                return 2;
+            }
+            else if(bank<player){
+                return 1;
+            }
+            else{
+                return 3;
+            }
+        }
+        else
+        {
+            return 0;
+        }
+    }
+    else
+    {
+        if (player > bank)
+        {
+            return 1;
+        }
+        else if (bank > player)
+        {
+            return 2;
+        }
+        else
+        {
+            return 3;
+        }
+    }
+}
