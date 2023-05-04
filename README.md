@@ -34,8 +34,9 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 
 **Detailed Compilation & Execution Instructions:**
 
-1. Run the code by pasting this in the terminal; "g++ pedantic errors    "
-2. 
+1. After unzipping, open the terminal and move to the directory containing the files
+2. Type "make Baccarat" in the terminal to compile and produce an executable file "Baccarat"
+3. Type "./Baccarat" to start playing the game
 
 **Demonstration Video Link:**
 
