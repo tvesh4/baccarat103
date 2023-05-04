@@ -214,7 +214,50 @@ short checkWin(short player, short bank, short round)
     }
 }
 
-&&
+/*********************************************************************************************
+* Checks whether the player or the banker should draw a third card or not based on the punto blanco casino drawing rules *
+*********************************************************************************************/
+bool drawThird(short person)
+{
+    if (person>5){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+/*********************************************************************************************
+* Checks whether the banker should draw a third card or not based on the player's third card *
+*********************************************************************************************/
+bool bankDraw(short player, short banker)
+{
+    //set rounding toward zero
+    // int originalRounding = _controlfp_s(0, 0, 0);
+    // _controlfp_s(_RC_CHOP, _MCW_RC, 0);
+
+    if (player == 8)
+    {
+        player = -2;
+    }
+    if (player == 9)
+    {
+        player = -1;
+    }
+
+    if ((player / 2) + 3 >= banker)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+    //reset original rounding
+    // _controlfp(originalRounding, _MCW_RC);
+}
+
     
     void display(string title)
 {
