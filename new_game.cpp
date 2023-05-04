@@ -25,6 +25,30 @@ void new_game(double &initial, double &current, double total, int wins, double r
     if (newgame.fail()){
         cout << "Error in opening the file!" << endl;
     }
+    while(true){
+        ifstream check;
+        check.open("gameFiles.txt");
+        bool isDup = false;
+        string tep;
+        while(check>>tep){
+            if(tep==name){
+                isDup = true;
+                break;
+            }
+        }
+        
+        if(isDup == true){
+            cout<<"Sorry, the name is existing. Please try another one."<<endl;
+            cout << "Enter a name for your new file: ";
+            cin >> name;
+            
+        }
+        else{
+            break;
+        }
+        
+    }
+    
     newgame << name << endl;
     newgame.close();
     newgame.open(name.c_str());
