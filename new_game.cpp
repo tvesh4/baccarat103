@@ -38,7 +38,7 @@ void new_game(double &initial, double &current, double total, int wins, double r
         }
         
         if(isDup == true){
-            cout<<"Sorry, the name is existing. Please try another one."<<endl;
+            cout<<"Sorry, the file name already exists. Please try another one."<<endl;
             cout << "Enter a name for your new file: ";
             cin >> name;
             
