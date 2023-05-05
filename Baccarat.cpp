@@ -110,7 +110,8 @@ int main()
             cout << "You currently have $" << money << endl;
             cout << "*************************" << endl;
         } else if (choice == 3) {
-            save_game(initial, money, total, wins, rate, file_name); //The'save_game()' function is used to save the game's progress if the user choose to save it. 
+            save_game(initial, money, total, wins, rate, file_name); 
+            //The'save_game()' function is used to save the game's progress if the user choose to save it. 
         } else if (choice == 4) {
             cout << "Exiting the game..." << endl;
             break;
@@ -121,18 +122,11 @@ int main()
     return 0; //Ends if the user decides to quit the game. The'main()' method concludes by returning 0.
 }
 
-/*
-
-It checks whether either the player or the banker has a natural win or needs to draw a third card according to the game rules. If a third card needs to be drawn, the function deals it and displays it using the `message()` function. 
-It then determines the winner using the `checkWin()` function and displays the winner using the `declareWinner()` function.
-If the user wins the bet, the function adds the payout to their balance, and if the user loses the bet, the function subtracts the bet amount from their balance. If there is a tie, the function returns the bet amount to those who bet on the player or the banker.
-Prompts the user to choose a bet and an amount, deals the cards, determines the winner, updates the game statistics, and updates the user's balance based on the outcome of the game.
-*/
 void play(double &money, double &total, int &wins, double &rate){ //Called when the user chooses to start playing the game.
     double choice; //Choose whether to bet on the player, banker, or tie using the `detect_invalid_input()` function to validate the input.
     detect_invalid_input("Please choose player or banker (1 for player, 2 for banker, 3 for tie): ", "Invalid choice. Please enter 1, 2 or 3.", choice);
     while (true){
-        if (choice == 1 || choice == 2 || choice == 3){
+        if (choice == 1 || choice == 2 || choice == 3){ 
             break;
         }
         else{
@@ -142,7 +136,8 @@ void play(double &money, double &total, int &wins, double &rate){ //Called when 
     }
     double playAmount;
     detect_invalid_input("How much money you want to play: $", "Invalid input.", playAmount);
-    while(true){ //Checks whether the user has enough money to make the bet, and if not, it displays an error message and prompts the user to enter a valid amount.
+    while(true){ 
+        //Checks whether the user has enough money to make the bet, and if not, it displays an error message and prompts the user to enter a valid amount.
         if(playAmount<=money && playAmount>=10){
             break; 
         }
@@ -192,7 +187,7 @@ void play(double &money, double &total, int &wins, double &rate){ //Called when 
     player.addCard(deck.at(51));
     message("Player's first draw", "Player", player.getCard1().getFace(), player.getCard1().getSuit());
 
-    Hand bank;
+    Hand bank; 
     bank.addCard(deck.at(50));
     message("Banker's first draw", "Banker", bank.getCard1().getFace(), bank.getCard1().getSuit());
 
@@ -205,9 +200,9 @@ void play(double &money, double &total, int &wins, double &rate){ //Called when 
     short winner = 0; //win conditions will be 1=player, 2=bank, 3=tie;
     winner = checkWin(player.getValue(), bank.getValue(), 1);
 
-    if (winner == 0)
+    if (winner == 0) //It checks whether either the player or the banker has a natural win or needs to draw a third card according to the game rules. 
     {   
-        if (drawThird(player.getValue()))
+        if (drawThird(player.getValue())) //If a third card needs to be drawn, the function deals it and displays using the `message()` function. 
         {
             player.addCard(deck.at(47));
             message("Player's third draw", "Player", player.getCard3().getFace(), player.getCard3().getSuit());
@@ -224,9 +219,9 @@ void play(double &money, double &total, int &wins, double &rate){ //Called when 
         }
         winner = checkWin(player.getValue(), bank.getValue(), 2);
     }
-
+    
     declareWinner(winner, player.getValue(), bank.getValue());
-    total++;
+    total++; //If the user wins the bet, the function adds the payout to their balance. 
     if(winner == 3 && choice == winner){ 
         money += playAmount*8; // Tie payout 8:1
         wins++;
@@ -236,60 +231,48 @@ void play(double &money, double &total, int &wins, double &rate){ //Called when 
         wins++;
     }
     else if(winner == 3){
-        // A tie returns bet to those who bet on Player or Banker
+        //If there is a tie, the function returns the bet amount to those who bet on the player or the banker.
     }
     else{
-        money -= playAmount; // Loses the bet
+        money -= playAmount; // If the user loses the bet, declareWinner() subtracts the bet amount from their balance.
     }
     rate = (wins/total)*100;
 }
 
-/*
-If the `winner` variable is `1`, the function displays "Player WINS with a hand of [player] over the Banker's hand of [bank]". If the `winner` variable is `2`, the function displays "Banker WINS with a hand of [bank] over the Player's hand of [player]". If the `winner` variable is `3`, the function displays "Player and Banker TIE with hands of [player]".
-
-Displays a message indicating the winner of the game and the value of the hands of the player and the banker. It uses a `switch` statement to determine the winner based on the value of the `winner` argument.
-*/
-void declareWinner(short winner, short player, short bank) //Takes three arguments: `winner`, `player`, and `bank`. The `winner` argument is an integer that represents the winner of the game: `1` for the player, `2` for the banker, and `3` for a tie. 
+void declareWinner(short winner, short player, short bank) 
+    //Takes three arguments: `winner`, `player`, and `bank`. The `winner` argument is an integer that represents the winner of the game: `1` for the player, `2` for the banker, and `3` for a tie. 
 {
     display("AND THE WINNER IS...");
-
-    switch (winner) //Determine the winner and display the appropriate message
     //The `player` and `bank` arguments are integers that represent the value of the player's and the banker's hands, respectively.
+    switch (winner) //Displays a message indicating the winner of the game and the value of the hands of the player and the banker. 
+    //It uses a `switch` statement to determine the winner based on the value of the `winner` argument.
     {
-    case 1:
+    case 1: //If the `winner` variable is `1`, the function displays "Player WINS with a hand of [player] over the Banker's hand of [bank]".
         cout << "Player WINS with a hand of " << player << " over the Banker's hand of " << bank << endl;
         break;
-    case 2:
+    case 2: //If the `winner` variable is `2`, the function displays "Banker WINS with a hand of [bank] over the Player's hand of [player]". 
         cout << "Banker WINS with a hand of " << bank << " over the Players's hand of " << player << endl;
         break;
-    case 3:
+    case 3: //If the `winner` variable is `3`, the function displays "Player and Banker TIE with hands of [player]".
         cout << "Player and Banker TIE with hands of " << player << endl;
         break;
     }
 }
 
-/*
-The `checkWin()` function takes three arguments: `player`, `bank`, and `round`. The `player` and `bank` arguments are integers that represent the value of the player's and the banker's hands, respectively. 
-The `round` argument is an integer that represents the round of the game: `1` for the first round and `2` for the second round.
-The function first checks if it is the first round of the game. If it is, it checks the value of the player's and the banker's hands to determine if either has a natural win or needs to draw a third card. If the player's hand is greater than 7 and the banker's hand is 7 or less, the player wins. 
-If the banker's hand is greater than 7 and the player's hand is 7 or less, the banker wins. 
-If both hands are greater than 7, the hand with the higher value wins, and if they have the same value, it is a tie.
-If neither hand meets any of these conditions, the function returns 0, indicating that the game is not over yet.
-If it is the second round of the game, the function compares the values of the player's and the banker's hands to determine the winner. If the player's hand is greater than the banker's hand, the player wins. If the banker's hand is greater than the player's hand, the banker wins. If both hands have the same value, it is a tie.
-*/
 short checkWin(short player, short bank, short round) //Checks the value of the player's and the banker's hands to determine the winner of the game.
-{
-    if (round == 1)
-    {
+//The `checkWin()` function takes three arguments: `player`, `bank`, and `round`. The `player` and `bank` arguments are integers that represent the value of the player's and the banker's hands, respectively. 
+{ 
+    if (round == 1) //Checks if it is the first round of the game.`1` for the first round and `2` for the second round.
+    { //Checks the value of the player's and the banker's hands to determine if either has a natural win or needs to draw a third card.
         if (player > 7 && bank <= 7)
-        {
+        { // If the player's hand is greater than 7 and the banker's hand is 7 or less, the player wins. 
             return 1;
         }
-        else if (bank > 7 && player <= 7)
+        else if (bank > 7 && player <= 7) //If the banker's hand is greater than 7 and the player's hand is 7 or less, the banker wins. 
         {
             return 2;
         }
-        else if (bank > 7 && player > 7)
+        else if (bank > 7 && player > 7) //If both hands are greater than 7, the hand with the higher value wins, and if they have the same value, it is a tie.
         {
             if(bank>player){
                 return 2;
@@ -306,27 +289,26 @@ short checkWin(short player, short bank, short round) //Checks the value of the 
             return 0;
         }
     }
-    else //It returns an integer value indicating the winner: `1` for the player, `2` for the banker, and `3` for a tie. 
-        //If the game is not over yet, it returns 0. The logic of the function is based on the rules of Baccarat.
+    else 
+        //It returns an integer value indicating the winner: `1` for the player, `2` for the banker, and `3` for a tie. 
+        //If the game is not over yet, it returns 0. If it is the second round of the game, the function compares the values of the player's and the banker's hands to determine the winner. 
     {
         if (player > bank)
-        {
+        { //If the player's hand is greater than the banker's hand, the player wins. 
             return 1;
         }
         else if (bank > player)
-        {
+        { //If the banker's hand is greater than the player's hand, the banker wins.
             return 2;
         }
         else
-        {
+        { // If both hands have the same value, it is a tie.
             return 3;
         }
     }
 }
 
-/*********************************************************************************************
-* Checks whether the player or the banker should draw a third card or not based on the punto blanco casino drawing rules *
-*********************************************************************************************/
+//Checks whether the player or the banker should draw a third card or not based on the punto blanco casino drawing rules
 bool drawThird(short person)
 {
     if (person>5){
@@ -337,9 +319,7 @@ bool drawThird(short person)
     }
 }
 
-/*********************************************************************************************
-* Checks whether the banker should draw a third card or not based on the player's third card *
-*********************************************************************************************/
+//Checks whether the banker should draw a third card or not based on the player's third card
 bool bankDraw(short player, short banker)
 {
     if (player == 8)
@@ -360,13 +340,10 @@ bool bankDraw(short player, short banker)
         return false;
     }
 }
-
-    
     void display(string title)
 {
     string line;
-
-
+        
     //Set the title
     cout << setw(20) << right << title << endl;
 
@@ -391,7 +368,6 @@ void message(string title, string player, int face, string suit)
         suit = "♠";
     }
     
-    
     string card_char = (face == 1) ? "A" :
                             (face == 11) ? "J" :
                             (face == 12) ? "Q" :
@@ -412,14 +388,10 @@ void message(string title, string player, int face, string suit)
     cin.ignore();
 }
 
-/*
-Takes three arguments: `initial`, `total`, and `rate`. The `initial` argument is a double that represents the initial balance of the player. The `total` argument is a double that represents the total number of games played by the player. 
-The `rate` argument is a double that represents the player's win rate as a percentage.
-`cout` that includes the initial balance, the total number of games played, and the win rate. The message is formatted using `<<` operator to concatenate strings with the values of the variables. The message includes the dollar sign before displaying the initial balance. 
-The win rate is displayed as a percentage using the `%` symbol.
-It formats the message using the `<<` operator to concatenate strings with the values of the variables and displays the win rate as a percentage using the `%` symbol. The purpose of the function is to provide the player with a summary of their game statistics.
-*/
-void showData(double initial, double total, double rate){ //Displays the player's initial balance, the total number of games played, and the win rate to the console.
+//initial = balance of the player
+//rate = player's win rate as a percentage
+//total = number of games played by the player
+void showData(double initial, double total, double rate){ //Displays
     cout << "You started with an initial of $" << initial << ", played a total of " << total << " games and your winning rate so far is " << rate << "%." << endl;
 }
 
