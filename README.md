@@ -35,8 +35,8 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 **Detailed Compilation & Execution Instructions:**
 
 1. After unzipping, open the terminal and move to the directory containing the files
-2. Type "make Baccarat" in the terminal to compile and produce an executable file "Baccarat"
-3. Type "./Baccarat" to start playing the game
+2. Type "make baccarat103" in the terminal to compile and produce an executable file "baccarat103"
+3. Type "./baccarat103" to start playing the game
 
 **Demonstration Video Link:**
 
@@ -49,7 +49,7 @@ The code generates random card distribution for playing the game of Baccarat.
     
 • Data structures for storing game status
 
-The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and     the number of games won.
+The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and the number of games won.
     
 • Dynamic memory management
 
