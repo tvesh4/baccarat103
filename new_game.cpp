@@ -5,7 +5,9 @@
 #include "detect_invalid_input.h"
 using namespace std;
 
+// This function is used to start a new game and save it to a file
 void new_game(double &initial, double &current, double total, int wins, double rate, string &file_name){
+    // Prompt the user to set the initial amount of money
     detect_invalid_input("Please set the initial money: ", "Invalid input.", current);
     while (true){
         if (current>=10 && current<=10000){
@@ -26,6 +28,7 @@ void new_game(double &initial, double &current, double total, int wins, double r
         cout << "Error in opening the file!" << endl;
     }
     while(true){
+    // Check for duplicate file names and prompt the user to enter a different name if necessary
         ifstream check;
         check.open("gameFiles.txt");
         bool isDup = false;
@@ -51,11 +54,11 @@ void new_game(double &initial, double &current, double total, int wins, double r
     
     newgame << name << endl;
     newgame.close();
-    newgame.open(name.c_str());
+    newgame.open(name.c_str()); // Write the game data to the new file
     if (newgame.fail()){
         cout << "Error in opening the file!" << endl;
     }
     newgame << initial << " " << current << " " << total << " " << wins << " " << rate << endl;
     newgame.close();
-    file_name = name;
+    file_name = name; // Set the file name to the user-provided name
 }
