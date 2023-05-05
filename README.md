@@ -44,18 +44,23 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 
 **Features**
 • Generation of random game sets or events
+
 The code generates random card distribution for playing the game of Baccarat.
     
 • Data structures for storing game status
+
 The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and     the number of games won.
     
 • Dynamic memory management
+
 The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and the number of games won.
     
 • File input/output
+
 The code provides file input/output operations for loading/saving game status to a file.
     
 • Program codes in multiple files
+
 The code is organized into multiple files such as card.h, detect_invalid_input.h, new_game.h, load_game.h, and save_game.h.
     
 • Proper indentation and naming styles
