@@ -35,7 +35,7 @@ const char LINE_SYMBOL = '*';
 
 int main()
 {
-    double initial, money, total=0.0, rate=0; //rate is still in development.
+    double initial, money, total=0.0, rate=0;
     double choice;
     int wins=0;
     string file_name;
@@ -342,10 +342,6 @@ bool drawThird(short person)
 *********************************************************************************************/
 bool bankDraw(short player, short banker)
 {
-    //set rounding toward zero
-    // int originalRounding = _controlfp_s(0, 0, 0);
-    // _controlfp_s(_RC_CHOP, _MCW_RC, 0);
-
     if (player == 8)
     {
         player = -2;
@@ -363,9 +359,6 @@ bool bankDraw(short player, short banker)
     {
         return false;
     }
-
-    //reset original rounding
-    // _controlfp(originalRounding, _MCW_RC);
 }
 
     
