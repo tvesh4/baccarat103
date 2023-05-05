@@ -1,3 +1,5 @@
+//It checks that the input is within the range of $10 to $10,000. It then prompts the user to enter a name for the new file.
+
 #include <fstream>
 #include <iostream>
 #include <string>
