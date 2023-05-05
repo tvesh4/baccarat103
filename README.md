@@ -44,18 +44,19 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 
 **Features**
 • Generation of random game sets or events
-    Random card distribution
+The code generates random card distribution for playing the game of Baccarat.
     
 • Data structures for storing game status
-    Playing
+The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and     the number of games won.
     
 • Dynamic memory management
-    User
+The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and the number of games won.
     
-• File input/output (e.g., for loading/saving game status)
+• File input/output
+The code provides file input/output operations for loading/saving game status to a file.
     
 • Program codes in multiple files
-    card.h
+The code is organized into multiple files such as card.h, detect_invalid_input.h, new_game.h, load_game.h, and save_game.h.
     
 • Proper indentation and naming styles
     Variable names
@@ -63,6 +64,7 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 • In-code documentation
     Comments
 
+Other features include proper indentation and naming styles for variable names, in-code documentation through comments, and multiple functions to display messages, declare winners, check for wins, draw cards, and play the game.
 
 
 **List of non-standard C/C++ libraries**, indicating what features in your game are supported by these libraries.
