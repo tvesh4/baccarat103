@@ -21,7 +21,7 @@ save_game.o: save_game.cpp save_game.h
 Baccarat.o: Baccarat.cpp Card.h detect_invalid_input.h load_game.h new_game.h save_game.h
 	g++ $(FLAGS) -c $<
 
-Baccarat: Baccarat.o Card.o detect_invalid_input.o load_game.o new_game.o save_game.o
+Baccarat103: Baccarat.o Card.o detect_invalid_input.o load_game.o new_game.o save_game.o
 	g++ $(FLAGS) $^ -o $@
 
 clean: #The `clean` rule deletes the `Baccarat` executable program and all object files.
