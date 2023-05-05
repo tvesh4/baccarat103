@@ -1,3 +1,4 @@
+//Includes several standard libraries and several header files, such as `iostream`, `iomanip`, `string`, `vector`, `algorithm`, `random`, `fstream`, `sstream`, and `cstdlib`. 
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -13,31 +14,35 @@
 #include "load_game.h"
 #include "save_game.h"
 
+//The `using namespace std;` statement is a directive that tells the compiler to use the `std` namespace. It contains several standard C++ functions and objects, without `std::`. 
 using namespace std;
 
+//Defined the `display()`, `message()`, and `showData()` functions without providing their implementations yet. 
 void display(string);
 void message(string, string, int, string);
 void showData(double, double, double);
 
+//Defines the `declareWinner()`, `checkWin()`, `drawThird()`, `bankDraw()`, and `play()` functions with their implementations. 
 void declareWinner(short, short, short);
 short checkWin(short, short, short);
 bool drawThird(short);
 bool bankDraw(short, short);
 void play(double &, double &, int &, double &);
 
+//Declares a constant named `LINE_LENGTH` with a value of 30 and a character variable named `LINE_SYMBOL` with a value of `*`.
 const int LINE_LENGTH = 30;
 const char LINE_SYMBOL = '*';
 
 int main()
 {
-    double initial, money, total=0.0, rate=0; //rate is still in development..... 
+    double initial, money, total=0.0, rate=0; //rate is still in development.
     double choice;
     int wins=0;
     string file_name;
-    ifstream file;
+    ifstream file; //'ifstream' object is used to open a file. 
     file.open("gameFiles.txt");
-    display("***** Welcome to Baccarat ****");
-    if(file.fail()){
+    display("***** Welcome to Baccarat ****"); //display a welcome message
+    if(file.fail()){ //to start a new game or load progress, the application first determines whether the file was successfully opened
         cout << "1. Start New Game" << endl;
         cout << "2. Load Progress (No Progress Detected)" << endl;
     }
@@ -47,8 +52,9 @@ int main()
     }
     
     detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", choice);
+    //continues running until the user selects a legitimate choice after the user's input is validated using the 'detect_invalid_input()' function.
     while (true){
-        if (choice == 1){
+        if (choice == 1){ //runs the 'new_game()' or 'load_game()' function as appropriate depending on whether the user wants to load their progress or begin a new game. 
             new_game(initial, money, total, wins, rate, file_name);
             break;
         } 
@@ -67,7 +73,7 @@ int main()
         }
     }
 
-    while (true) {
+    while (true) { // 4 options are provided to the user.
         double choice;
         showData(initial, total, rate);
         cout << "Menu:" << std::endl;
@@ -76,7 +82,7 @@ int main()
         cout << "3. Save the game" << std::endl;
         cout << "4. Exit the game" << std::endl;
         detect_invalid_input("Enter your choice (1, 2, 3, or 4): ", "Invalid choice. Please enter 1, 2, 3 or 4.", choice);
-        if (choice == 1) {
+        if (choice == 1) { //To begin playing, the program calls the "play()" function after once more validating the user's input. 
             cout << "Starting the game..." << endl;
             play(money, total, wins, rate);
             if (money < 10){
@@ -89,7 +95,7 @@ int main()
                         new_game(initial, money, total, wins, rate, file_name);
                         break;
                     }
-                    else if (decision == 2){
+                    else if (decision == 2){ //shows the current balance if the user decides to check it. 
                         cout << "Goodbye, see you next time!" << endl;
                         exit(0);
                     }
@@ -99,12 +105,12 @@ int main()
                     }
                 } 
             }
-        } else if (choice == 2) {
+        } else if (choice == 2) { //The application tells the user to cancel or resume the game if the user's balance drops below $10. 
             cout << "*************************" << endl;
             cout << "You currently have $" << money << endl;
             cout << "*************************" << endl;
         } else if (choice == 3) {
-            save_game(initial, money, total, wins, rate, file_name);
+            save_game(initial, money, total, wins, rate, file_name); //The'save_game()' function is used to save the game's progress if the user choose to save it. 
         } else if (choice == 4) {
             cout << "Exiting the game..." << endl;
             break;
@@ -112,11 +118,18 @@ int main()
             cout << "Invalid choice. Please enter 1, 2, 3 or 4." << endl;
         }
     }
-    return 0;
+    return 0; //Ends if the user decides to quit the game. The'main()' method concludes by returning 0.
 }
 
-void play(double &money, double &total, int &wins, double &rate){
-    double choice;
+/*
+
+It checks whether either the player or the banker has a natural win or needs to draw a third card according to the game rules. If a third card needs to be drawn, the function deals it and displays it using the `message()` function. 
+It then determines the winner using the `checkWin()` function and displays the winner using the `declareWinner()` function.
+If the user wins the bet, the function adds the payout to their balance, and if the user loses the bet, the function subtracts the bet amount from their balance. If there is a tie, the function returns the bet amount to those who bet on the player or the banker.
+Prompts the user to choose a bet and an amount, deals the cards, determines the winner, updates the game statistics, and updates the user's balance based on the outcome of the game.
+*/
+void play(double &money, double &total, int &wins, double &rate){ //Called when the user chooses to start playing the game.
+    double choice; //Choose whether to bet on the player, banker, or tie using the `detect_invalid_input()` function to validate the input.
     detect_invalid_input("Please choose player or banker (1 for player, 2 for banker, 3 for tie): ", "Invalid choice. Please enter 1, 2 or 3.", choice);
     while (true){
         if (choice == 1 || choice == 2 || choice == 3){
@@ -129,7 +142,7 @@ void play(double &money, double &total, int &wins, double &rate){
     }
     double playAmount;
     detect_invalid_input("How much money you want to play: $", "Invalid input.", playAmount);
-    while(true){
+    while(true){ //Checks whether the user has enough money to make the bet, and if not, it displays an error message and prompts the user to enter a valid amount.
         if(playAmount<=money && playAmount>=10){
             break; 
         }
@@ -141,7 +154,7 @@ void play(double &money, double &total, int &wins, double &rate){
         }
         detect_invalid_input("How much money you want to play: $", "Invalid input.", playAmount);
     }
-    vector<Card> deck;
+    vector<Card> deck; //Creates a deck of cards, shuffles them, and deals the first two cards to the player and the banker, displaying them using the `message()` function. 
     for (short x = 0; x < 4; x++)
     {
         string suit;
@@ -231,14 +244,17 @@ void play(double &money, double &total, int &wins, double &rate){
     rate = (wins/total)*100;
 }
 
-/********************
-* Declares a winner *
-********************/
-void declareWinner(short winner, short player, short bank)
+/*
+If the `winner` variable is `1`, the function displays "Player WINS with a hand of [player] over the Banker's hand of [bank]". If the `winner` variable is `2`, the function displays "Banker WINS with a hand of [bank] over the Player's hand of [player]". If the `winner` variable is `3`, the function displays "Player and Banker TIE with hands of [player]".
+
+Displays a message indicating the winner of the game and the value of the hands of the player and the banker. It uses a `switch` statement to determine the winner based on the value of the `winner` argument.
+*/
+void declareWinner(short winner, short player, short bank) //Takes three arguments: `winner`, `player`, and `bank`. The `winner` argument is an integer that represents the winner of the game: `1` for the player, `2` for the banker, and `3` for a tie. 
 {
     display("AND THE WINNER IS...");
 
-    switch (winner)
+    switch (winner) //Determine the winner and display the appropriate message
+    //The `player` and `bank` arguments are integers that represent the value of the player's and the banker's hands, respectively.
     {
     case 1:
         cout << "Player WINS with a hand of " << player << " over the Banker's hand of " << bank << endl;
@@ -251,10 +267,17 @@ void declareWinner(short winner, short player, short bank)
         break;
     }
 }
-/*********************************************
-* Checks to see if we have a winner or a tie *
-*********************************************/
-short checkWin(short player, short bank, short round)
+
+/*
+The `checkWin()` function takes three arguments: `player`, `bank`, and `round`. The `player` and `bank` arguments are integers that represent the value of the player's and the banker's hands, respectively. 
+The `round` argument is an integer that represents the round of the game: `1` for the first round and `2` for the second round.
+The function first checks if it is the first round of the game. If it is, it checks the value of the player's and the banker's hands to determine if either has a natural win or needs to draw a third card. If the player's hand is greater than 7 and the banker's hand is 7 or less, the player wins. 
+If the banker's hand is greater than 7 and the player's hand is 7 or less, the banker wins. 
+If both hands are greater than 7, the hand with the higher value wins, and if they have the same value, it is a tie.
+If neither hand meets any of these conditions, the function returns 0, indicating that the game is not over yet.
+If it is the second round of the game, the function compares the values of the player's and the banker's hands to determine the winner. If the player's hand is greater than the banker's hand, the player wins. If the banker's hand is greater than the player's hand, the banker wins. If both hands have the same value, it is a tie.
+*/
+short checkWin(short player, short bank, short round) //Checks the value of the player's and the banker's hands to determine the winner of the game.
 {
     if (round == 1)
     {
@@ -283,7 +306,8 @@ short checkWin(short player, short bank, short round)
             return 0;
         }
     }
-    else
+    else //It returns an integer value indicating the winner: `1` for the player, `2` for the banker, and `3` for a tie. 
+        //If the game is not over yet, it returns 0. The logic of the function is based on the rules of Baccarat.
     {
         if (player > bank)
         {
@@ -395,7 +419,14 @@ void message(string title, string player, int face, string suit)
     cin.ignore();
 }
 
-void showData(double initial, double total, double rate){
+/*
+Takes three arguments: `initial`, `total`, and `rate`. The `initial` argument is a double that represents the initial balance of the player. The `total` argument is a double that represents the total number of games played by the player. 
+The `rate` argument is a double that represents the player's win rate as a percentage.
+`cout` that includes the initial balance, the total number of games played, and the win rate. The message is formatted using `<<` operator to concatenate strings with the values of the variables. The message includes the dollar sign before displaying the initial balance. 
+The win rate is displayed as a percentage using the `%` symbol.
+It formats the message using the `<<` operator to concatenate strings with the values of the variables and displays the win rate as a percentage using the `%` symbol. The purpose of the function is to provide the player with a summary of their game statistics.
+*/
+void showData(double initial, double total, double rate){ //Displays the player's initial balance, the total number of games played, and the win rate to the console.
     cout << "You started with an initial of $" << initial << ", played a total of " << total << " games and your winning rate so far is " << rate << "%." << endl;
 }
 
