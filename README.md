@@ -37,10 +37,10 @@ For example, if you initially bet $100 and you win, you would receive your $100 
 1. After unzipping, open the terminal and move to the directory containing the files
 2. Type "make baccarat103" in the terminal to compile and produce an executable file "baccarat103"
 3. Type "./baccarat103" to start playing the game
+4. Follow the easy-to-understand instructions on the UI of the game i.e. Press 1 to start.
 
 **Demonstration Video Link:**
-
-
+https://youtu.be/4NVKsn5PDpk
 
 **Features**
 • Generation of random game sets or events
@@ -64,15 +64,15 @@ The code provides file input/output operations for loading/saving game status to
 The code is organized into multiple files such as card.h, detect_invalid_input.h, new_game.h, load_game.h, and save_game.h.
     
 • Proper indentation and naming styles
-    Variable names
+    Variable names are easy to understand.
     
 • In-code documentation
-    Comments
+    Comments are provided.
 
 Other features include proper indentation and naming styles for variable names, in-code documentation through comments, and multiple functions to display messages, declare winners, check for wins, draw cards, and play the game.
 
 
-**List of non-standard C/C++ libraries**, indicating what features in your game are supported by these libraries.
+*All libraries used are standard C/C++ libraries.
 
 
 
