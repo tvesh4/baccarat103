@@ -37,12 +37,6 @@ int main()
 {
     double initial, money, total=0, wins=0, rate=0;
     double game_status[5] = {initial, money, total, wins, rate};
-    // An array is created to store the data that determine the status of the game. The following illustrates the meaning of each index of the array:
-    // game_status[0] = initial money set by the user
-    // game_status[1] = balance of the user
-    // game_status[2] = total number of games played by the user
-    // game_status[3] = total number of games won by the user
-    // game_status[4] = the winning rate of the user
     double choice;
     string file_name;
     ifstream file; //'ifstream' object is used to open a file. 
@@ -98,10 +92,6 @@ int main()
                 detect_invalid_input("Enter your choice (1 or 2): ", "Invalid choice. Please enter 1 or 2.", decision);
                 while (true){
                     if (decision == 1){
-                        // Some data are reset to 0 to allow the user to restart
-                        game_status[2] = 0;
-                        game_status[3] = 0;
-                        game_status[4] = 0;
                         new_game(game_status, file_name);
                         break;
                     }
