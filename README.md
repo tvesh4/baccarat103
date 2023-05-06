@@ -1,10 +1,10 @@
 # Presenting ✨Baccarat_103✨
 
-tvesh4 - 3036065551
-uchralenkh - 3035958579
-KarmaYY22 - 3035919743
-ethbtcc - 3035835650
-dalight-luckyw - 3036066012
+tvesh4 - Name: Kumar Tvesha Sanjay UID: 3036065551
+uchralenkh - Name: Enkhbayar Uchral UID: 3035958579
+KarmaYY22 - Name: Yang Yin UID: 3035919743
+ethbtcc - Name: Chen Chi UID: 3035835650
+dalight-luckyw - Name: Wang Yam Yuk UID: 3036066012
 
 We are Group 103 of ENGG1340 or COMP2113! We hope you enjoy our text-based C++ project.
 
@@ -21,22 +21,23 @@ Gambling addiction and financial and personal issues might result from playing g
 
 4. The player must draw another card if the total of their hands is less than 6. The player stands if their hand total is 6 or 7.
 
-5. If the player opts to stand and their hand total is less than 6, the banker will draw another card. The banker stands if their hand total is 7. If the player's third card is a 6 or 7, and the banker's hand total is 6, the banker draws another card.
+5. If the player stand (hand < 6), the banker will stand if their own hand is also less than 6, or else draw another card. If the player draw another card, the banker will draw another card based on a more complex rule. Briefly, the banker stands if their hand total is 7. If the player's third card is a 6 or 7, and the banker's hand total is 6, the banker draws another card. The detailed drawing rule can be seen at this website https://en.wikipedia.org/wiki/Baccarat
 
-6. The hand with the closest sum to 9 is the one that wins. The player wins and is paid even money if their hand is closer to 9. The banker wins and receives even money less a commission if their hand is closer to 9 than any other hand.
+7. The hand with the closest sum to 9 is the one that wins. The player wins and is paid even money if their hand is closer to 9. The banker wins and receives even money less a commission if their hand is closer to 9 than any other hand.
 
 7. The player wins and are rewarded 8 to 1 if you bet on a tie and both hands have the same total. This is an uncommon event, so it's not advised to use it as a regular betting strategy.
 
 **Reward:**
 
-If you place a bet and you win, you will receive your initial bet back plus an additional amount equal to 50% of your initial bet. 
-For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $50, for a total of $150. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 1.5.
+If you place a bet and you win, 1-to-1 even money will be paid. You will receive two times of your initial bet.
+For example, if you initially bet $100 and you win, you would receive your $100 bet back plus an additional $100, for a total of $200. Hence, the amount you would receive if you win is equal to your initial bet multiplied by 2.
+If you place a bet on either player or banker, and the outcome is a tie, you will receive your money back.
 
 **Detailed Compilation & Execution Instructions:**
 
 1. After unzipping, open the terminal and move to the directory containing the files
-2. Type "make baccarat103" in the terminal to compile and produce an executable file "baccarat103"
-3. Type "./baccarat103" to start playing the game
+2. Type "make Baccarat103" in the terminal to compile and produce an executable file "Baccarat103"
+3. Type "./Baccarat103" to start playing the game
 4. Follow the easy-to-understand instructions on the UI of the game i.e. Press 1 to start.
 
 **Demonstration Video Link:**
@@ -46,13 +47,19 @@ https://youtu.be/4NVKsn5PDpk
 • Generation of random game sets or events
 
 The code generates random card distribution for playing the game of Baccarat.
+"random_device" from the standard library <random> is used to generate random numbers.
     
 • Data structures for storing game status
 
-The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and the number of games won.
+The code uses an array called "game_status" to store various data determining the status of the game, including the player's initial money, current money, total money won/lost, the number of games won, and the winning rate.
     
 • Dynamic memory management
 
+The code contains many instances of using vector to store game data.
+For example, a vector called "deck" is used to store randomly shuffled cards for gameplay.
+Besides, memory is released after usage by ".clear" and swapping with an empty dummy vector.
+For example, the memory of the vector "names" used for loading games in load_game.cpp is released afterwards.
+    
 The code contains data structures for storing the status of the game, including the player's initial money, current money, total money won/lost, and the number of games won.
     
 • File input/output
