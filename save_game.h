@@ -4,6 +4,6 @@
 
 #include <string>
 
-void save_game(double initial, double current, double total, int wins, double rate, std::string file_name);
+void save_game(double status[], std::string file_name);
 
 #endif
