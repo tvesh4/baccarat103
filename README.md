@@ -6,7 +6,7 @@ KarmaYY22 - Name: Yang Yin UID: 3035919743
 ethbtcc - Name: Chen Chi UID: 3035835650
 dalight-luckyw - Name: Wang Yam Yuk UID: 3036066012
 
-We are Group 103 of ENGG1340 or COMP2113! We hope you enjoy our text-based C++ project.
+We are Group 103 of ENGG1340 and COMP2113! We hope you enjoy our text-based C++ project.
 
 **Warning:**
 Gambling addiction and financial and personal issues might result from playing games like Baccarat_103. Never wager more than you can afford to lose, and never try to make up for lost funds by placing additional bets. It's crucial to take breaks and avoid letting gambling interfere with your regular activities and obligations. Keep in mind that playing this game is purely for fun and not as a means of earning money. Consult a specialist or a support group if you need assistance overcoming a gambling addiction.
