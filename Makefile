@@ -25,6 +25,6 @@ Baccarat103: Baccarat.o Card.o detect_invalid_input.o load_game.o new_game.o sav
 	g++ $(FLAGS) $^ -o $@
 
 clean: #The `clean` rule deletes the `Baccarat103` executable program and all object files.
-	rm -f Baccarat103 *.o
+	rm -f Baccarat103 *.o *.txt
 
 .PHONY: clean
