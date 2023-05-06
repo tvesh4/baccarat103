@@ -8,19 +8,19 @@
 using namespace std;
 
 // This function is used to start a new game and save it to a file
-void new_game(double &initial, double &current, double total, int wins, double rate, string &file_name){
+void new_game(double status[], string &file_name){
     // Prompt the user to set the initial amount of money
-    detect_invalid_input("Please set the initial money: ", "Invalid input.", current);
+    detect_invalid_input("Please set the initial money: ", "Invalid input.", status[1]);
     while (true){
-        if (current>=10 && current<=10000){
+        if (status[1]>=10 && status[1]<=10000){
             break;
         }
         else{
             cout << "Range of initial money should be within $10 and $10,000" << endl;
-            detect_invalid_input("Please set the initial money: ", "Invalid input.", current);
+            detect_invalid_input("Please set the initial money: ", "Invalid input.", status[1]);
         }
     }
-    initial = current; 
+    status[0] = status[1]; 
     string name;
     cout << "Enter a name for your new file: ";
     cin >> name;
@@ -56,11 +56,15 @@ void new_game(double &initial, double &current, double total, int wins, double r
     
     newgame << name << endl;
     newgame.close();
+    name.append(".txt");
     newgame.open(name.c_str()); // Write the game data to the new file
     if (newgame.fail()){
         cout << "Error in opening the file!" << endl;
     }
-    newgame << initial << " " << current << " " << total << " " << wins << " " << rate << endl;
+    for (int i=0; i<5; i++){
+        newgame << status[i] << " ";
+    }
+    newgame << endl;
     newgame.close();
     file_name = name; // Set the file name to the user-provided name
 }
